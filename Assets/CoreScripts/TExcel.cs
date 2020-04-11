@@ -113,23 +113,15 @@ namespace TExcel
 
         public static List<T> GetFieldData<T>(List<string[]> data) where T : ISExcel
         {
-            FieldInfo[] fields = typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(T).GetFields(BindingFlags.NonPublic|BindingFlags.DeclaredOnly | BindingFlags.Instance);
             List<T> targetData = new List<T>();
             try
             {
                 Type type = typeof(T);
 
-                for (int i = 0; i < fields.Length; i++)
-                {
-                    string temp = data[0][i].ToString();
-                    if (!temp.Equals(fields[i].Name) && !temp.Equals(-1))
-                    {
-                        throw new Exception(" Struct Or Excel Pos Not Equals:(" + type.ToString() + "Struct Property:(Column:" + i + "|" + fields[i].Name + ") Excel Property:(Row:" + i + "|" + temp + ")");
-                    }
-                }
                 for (int i = 0; i < data.Count; i++)
                 {
-                    if (i <= 1)     //Ignore Row 0 and 1
+                    if (i == 0)     //Ignore Row 0 and 1
                         continue;
 
                     object obj = Activator.CreateInstance(type, true);
