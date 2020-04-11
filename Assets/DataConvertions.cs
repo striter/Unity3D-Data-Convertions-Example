@@ -31,7 +31,7 @@ public class DataConvertions : MonoBehaviour {
         EnumData2,
     }
 
-    struct STest:IXmlConvert
+    struct STest:IDataConvert
     {
         public int m_Index { get; private set; }
         public List<STest1> m_Item1s { get; private set; }
@@ -46,7 +46,7 @@ public class DataConvertions : MonoBehaviour {
         public string GetSomeInnerDatas() => "," + m_Item2.m_Value1 + "," + m_Item2.m_Value2 + "," + m_Item2.m_Item.m_Value2;
     }
 
-    struct STest1 : IXmlConvert
+    struct STest1 : IDataConvert
     {
         public float m_Value1 { get; private set; }
         public enum_Test m_Value2 { get; private set; }
@@ -56,7 +56,7 @@ public class DataConvertions : MonoBehaviour {
             m_Value2 = value2;
         }
     }
-    struct STest2:IXmlConvert
+    struct STest2:IDataConvert
     {
         public int m_Value1 { get; private set; }
         public string m_Value2 { get; private set; }

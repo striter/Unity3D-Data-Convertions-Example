@@ -17,9 +17,13 @@ public class ExcelAndLocalization : MonoBehaviour {
         m_Normal.autoLocalizeKey = "GAME_TEST_NORMAL";
 
 
-        Properties<STest>.Init();
-        for (int i = 0; i < Properties<STest>.PropertiesList.Count; i++)
-            Debug.Log(TDataConvert.Convert(Properties<STest>.PropertiesList[i]));
+        Properties<STestProperties>.Init();
+        for (int i = 0; i < Properties<STestProperties>.PropertiesList.Count; i++)
+            Debug.Log(TDataConvert.Convert(Properties<STestProperties>.PropertiesList[i]));
+
+        SheetProperties<STestSheetProperties>.Init();
+        for (int i = 0; i < SheetProperties<STestSheetProperties>.GetPropertiesList(1).Count; i++)
+            Debug.Log(TDataConvert.Convert( SheetProperties<STestSheetProperties>.GetPropertiesList(1)[i]));
     }
     void OnDestroy()
     {
@@ -35,13 +39,21 @@ public class ExcelAndLocalization : MonoBehaviour {
     }
 
 #pragma warning disable 0649
-    struct STest :ISExcel,IXmlConvert
+    struct STestProperties :ISExcel,IDataConvert
     {
          int index;
          int value1;
          int value2;
          int value3;
          int value4;
+        public void InitAfterSet()
+        {
+        }
+    }
+    struct STestSheetProperties : ISExcel, IDataConvert
+    {
+        int index;
+        int value1;
         public void InitAfterSet()
         {
         }

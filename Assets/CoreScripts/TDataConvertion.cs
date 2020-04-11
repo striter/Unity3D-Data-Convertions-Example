@@ -20,7 +20,7 @@ public struct RangeFloat
 }
 
 #region DataPhrase
-public interface IXmlConvert
+public interface IDataConvert
 {
 }
 public static class TDataConvert
@@ -130,7 +130,7 @@ public static class TDataConvert
     }
     #endregion
     #region IXmlConvertType
-    static readonly Type m_XmlPhraseType = typeof(IXmlConvert);
+    static readonly Type m_XmlPhraseType = typeof(IDataConvert);
     static Dictionary<Type, FieldInfo[]> m_XmlConvertFieldInfos = new Dictionary<Type, FieldInfo[]>();
     static bool CheckIXmlParseType(Type type)
     {

@@ -67,7 +67,6 @@ namespace TExcel
                 Debug.LogError(typeof(T).ToString() + ",Excel Not Inited,Shoulda Init Property First");
                 return null;
             }
-            Debug.Log("Using Excel Properties"+m_AllProperties[i].m_SheetName);
             return m_AllProperties[i].m_Properties;
         }
         public static void Init()

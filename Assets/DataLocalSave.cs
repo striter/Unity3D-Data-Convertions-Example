@@ -59,7 +59,7 @@ public class DataLocalSave : MonoBehaviour {
         }
     }
 
-    struct SGameTestItem:IXmlConvert
+    struct SGameTestItem:IDataConvert
     {
         public int m_Value { get; private set; }
         public SGameTestItem(int value)
